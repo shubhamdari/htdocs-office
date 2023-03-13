@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 
                                 <label for=""><b>E-mail :</b></label>
                                 <input type="text" name="email" class="form-control" value="">
-                                <span class="error">* <?php echo $validation['emailErr']; ?></span>
+                                <span class="error">* <?php if(isset($validation['emailErr'])){ echo $validation['emailErr'];} ?></span>
                                 <br>
 
                                 <label for=""><b>Website :</b></label>
