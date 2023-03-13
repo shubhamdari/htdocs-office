@@ -1,0 +1,2 @@
+//PHP Final Class concept is unique and non-extendable like the normal classes-- Final Class
+// Prevemt Overriding-- Final Method

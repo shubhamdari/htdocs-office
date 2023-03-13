@@ -1,0 +1,14 @@
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque impedit voluptatum possimus iure. Nesciunt
+cum et voluptatum esse aperiam? Natus earum maxime debitis et, quis magni quasi voluptatibus quia facilis ullam
+asperiores laborum modi tempore ipsum ipsa laboriosam exercitationem, consequuntur nulla, eaque amet inventore dolorem
+vitae. A, sapiente labore?
+
+
+$name = $_POST["name"];
+$roll = $_POST["roll"];
+$phone = $_POST["phone"];
+$age = $_POST["age"];
+$email = $_POST["email"];
+$father = $_POST["father"];
+$gender = $_POST["gender"];
+$hobbies = $_POST["hobbies"];
