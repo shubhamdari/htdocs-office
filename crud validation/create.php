@@ -50,16 +50,16 @@ if (isset($_POST['submit'])) {
                                 <br>
 
                                 <label for=""><b>Comment :</b></label>
-                                <textarea name="comment" rows="5" cols="40" class="form-control"></textarea>
+                                <textarea name="comment" rows="5" cols="40" class="form-control"></textarea>cli_set_process_title
                                 <span class="error">* <?php if(isset($validation['commentErr'])){ echo $validation['commentErr'];} ?></span>
                                 <br>
 
                                 <label for=""><b>Gender :</b></label>
                                 <br>
                                 <label for="Male"><b>Male :</b></label>
-                                <input type="radio" name="gender" id="Male" value="Male" <?php if (isset($gender) && $gender == "Male") echo ""; ?>>                                <br>
+                                <input type="radio" name="gender" id="Male" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>>                                <br>
                                 <label for="Female"><b>Female :</b></label>
-                                <input type="radio" name="gender" id="Female" value="Female" <?php if (isset($gender) && $gender == "Female") echo ""; ?>>
+                                <input type="radio" name="gender" id="Female" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>>
                                 <br>
 
                                 <span class="error">* <?php if(isset($validation['genderErr'])){ echo $validation['genderErr'];} ?></span>
