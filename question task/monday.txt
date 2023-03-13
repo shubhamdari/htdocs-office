@@ -1,0 +1,79 @@
+ write a php program to sum all elements of array using function
+ write a php program to check the number  even or odd using function
+ write a php program to check number is prime or not  using function
+ write a php program to print table of a number using function
+ write a php program to print 1 to 50 all even numbers using function
+ write a php program to find greatest number in three number using function
+ write a php program to find smallest number in index array using function 
+. write a php program to print 10 times hello world using function 
+ write a php program to check number is divisible by 5 and 10 or not using function
+ write a php program to find factorial of a number using function
+. write a program to short an index array without using array function
+.  write a php program to add all even number b/w 1-100 using loop.
+. write a program to print an array with unique element using function.
+. write a program to print all prime numbers between 1 to  without using in built function  
+.  there is a grading system in an examination evaluation.	
+	
+Score	Grade
+
+>=90%	Excellent
+Between 80% and 89%	Very Good
+Between 60% and 79%	Good
+Between 50% and 59%	Average
+Between 40% and 49%	Poor
+<40%	
+
+ .  Write a php program to check whether an alphabet is a vowel or consonant
+" write a php program to print first 10 natural number in reverse with square  value using while loop.
+. write a php program to print first 20 number and check the number even or odd.
+if number is even then print square number.
+. write a program to print an array with unique element using function.
+.write a program to caluclate addition , substraction , multiplication ,divide in a single function
+ of given given numbers "
+
+.Check if three numbers are equal
+.Which number is greatest among three numbers
+.Grade of a student based on marks
+.Check if a year is a leap year
+ find smallest number among four numbers. take two variable and store string value ,print stings in single line using string concatination
+. write a program to check variable value datatype
+. write a program to check string are pallindrome or not
+. write a program to check number is odd or not if odd then print square of number otherwise print cube of number 
+
+ write a program to  check number divisible by 4 or not
+ write a program to check number is even or odd if number is even then check number divisible by 5 or not and if number is odd then check number divisible by 3 or not
+. write a program to check a person can votes if age is greater than or equal to 18
+ write a program to add all even number  between 1 to 10
+ write a php program to print first 10 natural number and their square using while loop.
+. write a program to print first 10 even number
+ write a program to find square of a number
+write a php program to find all prime numbers of index array
+example :-
+$numbers = [5,8,9,7,13,45,23]
+output :- [5,7,13,23]
+
+. write a php program to find greatest number from given three numbers using function
+
+. write a php program to find all negative numbers and positive numbers ,store in new array
+given array :-
+$numbers = [1,3,4,5,6,-6,-8,-21]
+output :-
+$positiveNumbers = [1,3,4,5,6]
+$negativeNumbers = [-6,-8,-21]
+
+. write a program to find array length without array function
+
+. write a program to add all even number  between 1 to 10
+
+. write a php program to print the following series 105,98,91....7.
+
+Write a PHP script that displays 1 2 3 4 5 6 7 8 9 10 numbers on one line	
+Write a PHP script using a for loop to add all the integers between 0 and 20 and display the sum	
+Write a PHP script to calculate and print the factorial of a number using a for loop	
+Write a program which will count the “t” characters in the text “techstudy”	
+Write a PHP script using nested for loop that creates a chess board	
+Write a PHP script to print all even numbers between 1 to 10	
+Write a PHP script to print all odd numbers between 1 to 10	
+Write a PHP Script to sum of even numbers from 1 to 10	
+Write a PHP Script to sum of odd numbers from 1 to 10	
+Write a PHP program to print table of number
