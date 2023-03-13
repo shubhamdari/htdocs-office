@@ -46,12 +46,12 @@ if (isset($_POST['submit'])) {
 
                                 <label for=""><b>Website :</b></label>
                                 <input type="text" name="website" class="form-control" value="">
-                                <span class="error">* <?php echo $validation['websiteErr']; ?></span>
+                                <span class="error">* <?php if(isset($validation['websiteErr'])){ echo $validation['websiteErr'];} ?></span>
                                 <br>
 
                                 <label for=""><b>Comment :</b></label>
                                 <textarea name="comment" rows="5" cols="40" class="form-control"></textarea>
-                                <span class="error">* <?php echo $validation['commentErr']; ?></span>
+                                <span class="error">* <?php if(isset($validation['commentErr'])){ echo $validation['commentErr'];} ?></span>
                                 <br>
 
                                 <label for=""><b>Gender :</b></label>
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
                                 <input type="radio" name="gender" id="Female" value="Female" <?php if (isset($gender) && $gender == "Female") echo ""; ?>>
                                 <br>
 
-                                <span class="error">* <?php echo $validation['genderErr']; ?></span>
+                                <span class="error">* <?php if(isset($validation['genderErr'])){ echo $validation['genderErr'];} ?></span>
 
                                 <br>
                                 <br>
