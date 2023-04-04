@@ -27,7 +27,7 @@ $hobbies = explode(',',$row['hobbies']);
                             </h1>
                         </div>
                         <div class="card-body">
-                            <form action="update.php?id=<?php $row['id']; ?>" method="post">
+                            <form action="update.php?id=<?php echo $row['id']; ?>" method="post">
                                 <label for=""><b>Name :</b></label>
                                 <input type="text" name="name" class="form-control" value="<?php echo $row['name']; ?>">
                                 <br>
@@ -51,7 +51,8 @@ $hobbies = explode(',',$row['hobbies']);
                                 <br>
 
                                 <label for=""><b>File :</b></label>
-                                <input type="file" name="file" class="form-control" value="<?php echo $row['name']; ?>">
+                                <input type="file" name="file" class="form-control" >   
+                                <input type="hidden" name="file_new" class="form-control" value="<?php echo $row['name']; ?>">
                                 <br>
                                 
                                 <label for=""><b>City :</b></label>
@@ -78,7 +79,6 @@ $hobbies = explode(',',$row['hobbies']);
                                 <input type="checkbox" name="hobbies[]" id="Playing Game" value="Playing Game"  <?php if(in_array('Playing Game',$hobbies)){echo 'checked';} ?>>
                                 <br>
                                 <br>
-
                                 <button type="submit" name="submit" class="btn btn-success w-100">Submit</button>
                             </form>
                         </div>
