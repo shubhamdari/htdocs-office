@@ -3,10 +3,28 @@ include 'config.php';
 
 
 
+$num_pre_number = 5;
+
+
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}
+$start_form = ($page - 1) * $num_pre_number;
 
 
 
-    $sql = "SELECT * FROM `pagination_crud_prac` WHERE `deleted_at`=1 ";
+
+if (isset($_POST['search'])) {
+    $value = trim($_POST['search']);
+    $sql = "SELECT * FROM `pagination_crud_prac` WHERE CONCAT(`name`,`email`) LIKE '%$value%' ";
+
+} else {
+    $sql = "SELECT * FROM `pagination_crud_prac` WHERE `deleted_at`= '1' LIMIT    $start_form,$num_pre_number ";
+}
+
+
 
 
 
@@ -26,6 +44,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
+    <a href="index.php"><button class="btn btn-info">View All</button></a>
     <form action="" method="post">
         <div class="conatiner">
             <div class="row">
@@ -82,7 +101,23 @@ $result = mysqli_query($conn, $sql);
             </div>
         <?php   }     ?>
     </table>
+    <?php
+    $sql1 = "SELECT * FROM pagination_crud_prac";
+    $result1 = mysqli_query($conn, $sql1);
+    $totalrecored = mysqli_num_rows($result1);
+    $totalpaginatin = ceil($totalrecored / $num_pre_number);
 
+    echo "<ul class='pagination admin-pagination'>";
+
+    for ($btn = 1; $btn <= $totalpaginatin; $btn++) {
+
+
+        echo "<a href='index.php? page=" . $btn . "'>
+            <button class='btn btn-info mx-1'>" . $btn . "</button>
+        </a>";
+    }
+    echo "</ul>";
+    ?>
   
 </body>
 
