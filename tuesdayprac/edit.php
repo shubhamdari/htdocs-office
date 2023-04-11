@@ -1,12 +1,14 @@
 <?php
-include_once "config.php";
+include 'config.php';
 session_start();
 $id = $_SESSION['id'];
+echo $id;
+die;
 $sql = "SELECT * FROM login_register WHERE id = '$id'";
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn , $sql);
 $row = mysqli_fetch_assoc($result);
-echo mysqli_error($conn);
-$hobbies = explode(',', $row['hobbies']);
+$hobbies = explode(',',$row['hobbies']);
+$validation = [];
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +28,8 @@ $hobbies = explode(',', $row['hobbies']);
 </style>
 
 <body>
-    <?php
-    if (isset($_POST['submit'])) {
-        include "edit_validation.php";
-    }
-    ?>
+
+
     <div class="container my-3">
         <div class="row">
             <div class="col-md-12">
@@ -41,9 +40,7 @@ $hobbies = explode(',', $row['hobbies']);
 
                             <div class="card-body">
 
-                                <form action="" method="post" enctype="multipart/form-data">
-
-                                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>" id="">
+                                <form action="edit_validation.php<?php echo $row['id']; ?>" method="post" enctype="multipart/form-data">
 
                                     <div class="form-group my-3">
                                         <b> Name :</b><input type="text" name="name" class="form-control" value="<?php echo $row['name']; ?>">
@@ -67,19 +64,26 @@ $hobbies = explode(',', $row['hobbies']);
                                         </span>
                                     </div>
 
+                                    <div class="form-group my-3">
+                                        <b> Password :</b><input type="password" name="password" class="form-control" value="<?php echo $row['password']; ?>">
+                                        <span class="error">
+                                            <?php
+                                            if (isset($validation['passwordErr'])) {
+                                                echo $validation['passwordErr'];
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
+
 
                                     <div class="form-group my-3">
                                         <label for=""><b>Gender :</b></label>
                                         <br>
                                         <label for="Male"><b>Male :</b></label>
-                                        <input type="radio" name="gender" id="Male" value="Male" <?php if ($row['gender'] == 'Male') {
-                                                                                                        echo 'checked';
-                                                                                                    } ?>>
+                                        <input type="radio" name="gender" id="Male" value="Male" <?php if($row['gender'] == 'Male'){echo 'checked';} ?>>
                                         <br>
                                         <label for="Female"><b>Female :</b></label>
-                                        <input type="radio" name="gender" id="Female" value="Female" <?php if ($row['gender'] == 'Female') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>
+                                        <input type="radio" name="gender" id="Female" value="Female"  <?php if($row['gender'] == 'Female'){echo 'checked';} ?>>
                                         <br>
 
                                         <span class="error">
@@ -106,9 +110,9 @@ $hobbies = explode(',', $row['hobbies']);
 
                                     <div class="form-group my-3">
                                         <label for=""><b>File :</b></label>
-                                        <input type="file" name="profile_photo" class="form-control">
-                                        <img src="files/<?php echo $row['profile_photo'] ?>" width="100px" height="100px" ;>
-                                        <input type="hidden" name="old_file" value="<?php echo $row['profile_photo'];  ?>">
+                                        <input type="file " name="profile_photo" class="form-control">
+                                        <img src="files/<?php echo $row['profile_photoErr'] ?>" width="100px" height="100px";>
+                                        <input type="hidden" name="old_file" value="<?php echo $row['profile_photoErr'];  ?>">
                                         <span class="error">
                                             <?php
                                             if (isset($validation['profile_photoErr'])) {
@@ -121,19 +125,11 @@ $hobbies = explode(',', $row['hobbies']);
                                     <div class="form-group my-3">
                                         <label for=""><b>State :</b></label>
                                         <select name="state" class="btn btn-success">
-                                            <option value="">Select State</option>
-                                            <option value="Mumbai" <?php if ($row['state'] == 'Mumbai') {
-                                                                        echo 'selected';
-                                                                    } ?>>Mumbai</option>
-                                            <option value="Pune" <?php if ($row['state'] == 'Pune') {
-                                                                        echo 'selected';
-                                                                    } ?>>Pune</option>
-                                            <option value="Delhi" <?php if ($row['state'] == 'Delhi') {
-                                                                        echo 'selected';
-                                                                    } ?>>Delhi</option>
-                                            <option value="Goa" <?php if ($row['state'] == 'Goa') {
-                                                                    echo 'selected';
-                                                                } ?>>Goa</option>
+                                            <option value="" >Select State</option>
+                                            <option value="Mumbai" <?php if($row['state'] == 'Mumbai'){echo 'selected';}?>>Mumbai</option>
+                                            <option value="Pune" <?php if($row['state'] == 'Pune'){echo 'selected';}?>>Pune</option>
+                                            <option value="Delhi" <?php if($row['state'] == 'Delhi'){echo 'selected';}?>>Delhi</option>
+                                            <option value="Goa" <?php if($row['state'] == 'Goa'){echo 'selected';}?>>Goa</option>
                                         </select>
                                         <br>
 
@@ -150,19 +146,13 @@ $hobbies = explode(',', $row['hobbies']);
                                         <label for=""><b>Hobbies :</b></label>
                                         <br>
                                         <label for="Reading"><b>Reading :</b></label>
-                                        <input type="checkbox" name="hobbies[]" id="Reading" value="Reading" <?php if (in_array('Reading', $hobbies)) {
-                                                                                                                    echo 'checked';
-                                                                                                                } ?>>
+                                        <input type="checkbox" name="hobbies[]" id="Reading" value="Reading" <?php if(in_array('Reading',$hobbies)){echo 'checked';} ?>>
                                         <br>
                                         <label for="Coding"><b>Coding :</b></label>
-                                        <input type="checkbox" name="hobbies[]" id="Coding" value="Coding" <?php if (in_array('Coding', $hobbies)) {
-                                                                                                                echo 'checked';
-                                                                                                            } ?>>
+                                        <input type="checkbox" name="hobbies[]" id="Coding" value="Coding"  <?php if(in_array('Coding',$hobbies)){echo 'checked';} ?>>
                                         <br>
                                         <label for="Playing"><b>Playing :</b></label>
-                                        <input type="checkbox" name="hobbies[]" id="Playing" value="Playing" <?php if (in_array('Playing', $hobbies)) {
-                                                                                                                    echo 'checked';
-                                                                                                                } ?>>
+                                        <input type="checkbox" name="hobbies[]" id="Playing" value="Playing"  <?php if(in_array('Playing',$hobbies)){echo 'checked';} ?>>
                                         <br>
                                         <span class="error">
                                             <?php
@@ -175,7 +165,7 @@ $hobbies = explode(',', $row['hobbies']);
 
                                     <div class="form-group my-3">
                                         <label for=""><b>Address :</b></label>
-                                        <textarea name="address" class="form-control" cols="10" rows="5"><?php echo $row['address'] ?></textarea>
+                                        <textarea name="address" class="form-control" cols="10" rows="5"></textarea>
                                         <span class="error">
                                             <?php
                                             if (isset($validation['addressErr'])) {
