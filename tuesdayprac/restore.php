@@ -10,7 +10,7 @@ $start_form = ($page - 1) * $pagination;
 
 if(isset($_POST['search'])){
     $value = trim($_POST['search']);
-    $sql = "SELECT * FROM login_register WHERE CONCAT(`name`) LIKE '%$value%'";
+    $sql = "SELECT * FROM login_register WHERE  CONCAT(`name`,`email`) LIKE '%$value%'";
 }else{
     $sql = "SELECT * FROM login_register WHERE `deleted_at`='1' LIMIT $start_form,$pagination";
 }
@@ -102,7 +102,7 @@ $result = mysqli_query($conn , $sql);
 
     for($btn= 1; $btn <= $totalpage ; $btn++){
         echo "<a href='restore.php?page=".$btn."'>
-        <button class='btn btn-success'>".$btn."</button>
+        <button class='btn btn-success mx-1'>".$btn."</button>
         </a>";
     }
     echo "</ul>";

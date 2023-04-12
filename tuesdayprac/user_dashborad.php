@@ -1,12 +1,16 @@
 <?php
 include "config.php";
 session_start();
+
+if ((isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1) || (isset($_SESSION['auth']) && $_SESSION['auth'] != 1)) {
+    header("location:javascript://history.go(-1)");
+}
 $id = $_SESSION['id'];
+
 $sql = "SELECT * FROM `login_history`  WHERE user_id = '$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-// echo mysqli_error($conn);
-// print_r($result);
+
 
 if (mysqli_num_rows($result) > 0) {
 ?>
@@ -24,6 +28,7 @@ if (mysqli_num_rows($result) > 0) {
     </head>
 
     <body>
+        <a href="logout.php">Logout</a>
         <a href="update_profile.php?id=<?php echo $row['user_id'] ?>" class="btn btn-success"><button class="btn btn-success">Update Profile</button></a>
         <table class="table table-hover table-bordered">
             <tr>

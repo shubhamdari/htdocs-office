@@ -35,18 +35,18 @@ if (count($validation) == 0) {
         
        
         $_SESSION['id'] = $row['id'];
-
+        $_SESSION['auth'] = 1;
+        $_SESSION['role_id'] = $row['role'];
         if ($row['role'] == 1) {
-            header("location:admin.php");
+            header("location:admin.php"); 
         } else {
-            // log to db
             $date = date("Y/m/d");
             $time = date("h:i:sa");
             $user_id = $row['id'];
             $sql = "INSERT INTO login_history(date , time , user_id) VALUES ('$date' , '$time' , '$user_id')";
             
             echo mysqli_error($conn);
-           mysqli_query($conn, $sql);
+            mysqli_query($conn, $sql);
             header("location:user_dashborad.php");
         }
     } else {

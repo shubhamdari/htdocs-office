@@ -1,8 +1,14 @@
-<?php 
+<?php
 
-if(isset($_POST['submit'])){
+session_start();
+
+if (isset($_SESSION['auth']) && $_SESSION['auth'] == 1) {
+   header("location:javascript://history.go(-1)");
+}
+
+if (isset($_POST['submit'])) {
    include 'store.php';
-}else{
+} else {
    $validation = [];
 }
 
@@ -19,10 +25,11 @@ if(isset($_POST['submit'])){
    <title>Register</title>
 </head>
 <style>
-   .error{
+   .error {
       color: red;
    }
 </style>
+
 <body>
 
 
@@ -39,45 +46,61 @@ if(isset($_POST['submit'])){
                         <form action="" method="post">
 
                            <div class="form-group my-3">
-                             <b> Name :</b><input type="text" name="name" class="form-control" value="<?php
-                             if(isset($_POST['name'])){echo ($_POST['name']);}
-                             ?>">
+                              <b> Name :</b><input type="text" name="name" class="form-control" value="<?php
+                                                                                                         if (isset($_POST['name'])) {
+                                                                                                            echo ($_POST['name']);
+                                                                                                         }
+                                                                                                         ?>">
                               <span class="error">
                                  <?php
-                                 if (isset($validation['nameErr'])) {echo $validation['nameErr'];}
+                                 if (isset($validation['nameErr'])) {
+                                    echo $validation['nameErr'];
+                                 }
                                  ?>
                               </span>
                            </div>
 
                            <div class="form-group my-3">
-                           <b> Email :</b><input type="email" name="email" class="form-control"value="<?php
-                             if(isset($_POST['email'])){echo ($_POST['email']);}
-                             ?>">
+                              <b> Email :</b><input type="email" name="email" class="form-control" value="<?php
+                                                                                                            if (isset($_POST['email'])) {
+                                                                                                               echo ($_POST['email']);
+                                                                                                            }
+                                                                                                            ?>">
                               <span class="error">
                                  <?php
-                                 if (isset($validation['emailErr'])) {echo $validation['emailErr'];}
+                                 if (isset($validation['emailErr'])) {
+                                    echo $validation['emailErr'];
+                                 }
                                  ?>
                               </span>
                            </div>
 
                            <div class="form-group my-3">
-                           <b>  Password :</b><input type="password" name="password" class="form-control"value="<?php
-                             if(isset($_POST['password'])){echo ($_POST['password']);}
-                             ?>">
+                              <b> Password :</b><input type="password" name="password" class="form-control" value="<?php
+                                                                                                                     if (isset($_POST['password'])) {
+                                                                                                                        echo ($_POST['password']);
+                                                                                                                     }
+                                                                                                                     ?>">
                               <span class="error">
                                  <?php
-                                 if (isset($validation['passwordErr'])) {echo $validation['passwordErr'];}
+                                 if (isset($validation['passwordErr'])) {
+                                    echo $validation['passwordErr'];
+                                 }
                                  ?>
                               </span>
                            </div>
 
                            <div class="form-group my-3">
-                           <b> Confirm_Password :</b><input type="password" name="confirm_password" class="form-control"value="<?php
-                             if(isset($_POST['confirm_password'])){echo ($_POST['confirm_password']);}
-                             ?>">
+                              <b> Confirm_Password :</b><input type="password" name="confirm_password" class="form-control" value="<?php
+                                                                                                                                    if (isset($_POST['confirm_password'])) {
+                                                                                                                                       echo ($_POST['confirm_password']);
+                                                                                                                                    }
+                                                                                                                                    ?>">
                               <span class="error">
                                  <?php
-                                 if (isset($validation['confirm_password'])) {echo $validation['confirm_password'];}
+                                 if (isset($validation['confirm_password'])) {
+                                    echo $validation['confirm_password'];
+                                 }
                                  ?>
                               </span>
                            </div>

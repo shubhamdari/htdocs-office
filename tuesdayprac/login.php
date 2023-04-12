@@ -1,8 +1,13 @@
-<?php 
+<?php
 
-if(isset($_POST['submit'])){
+session_start();
+
+if ((isset($_SESSION['auth']) && $_SESSION['auth'] == 1)) {
+   header("location:javascript://history.go(-1)");
+}
+if (isset($_POST['submit'])) {
    include 'login_checked.php';
-}else{
+} else {
    $validation = [];
 }
 
@@ -19,10 +24,11 @@ if(isset($_POST['submit'])){
    <title>Register</title>
 </head>
 <style>
-   .error{
+   .error {
       color: red;
    }
 </style>
+
 <body>
 
 
@@ -39,44 +45,48 @@ if(isset($_POST['submit'])){
                         <form action="" method="post">
 
                            <div class="form-group my-3">
-                           <div class="form-group my-3">
-                           <b> Email :</b><input type="email" name="email" class="form-control">
-                              <span class="error">
-                                 <?php
-                                 if (isset($validation['emailErr'])) {
-                                    echo $validation['emailErr'];
-                                 }
-                                 ?>
-                              </span>
-                           </div>
+                              <div class="form-group my-3">
+                                 <b> Email :</b><input type="email" name="email" class="form-control" value="<?php
+                                                                                                               if (isset($_POST['email'])) {
+                                                                                                                  echo ($_POST['email']);
+                                                                                                               }
+                                                                                                               ?>">
+                                 <span class="error">
+                                    <?php
+                                    if (isset($validation['emailErr'])) {
+                                       echo $validation['emailErr'];
+                                    }
+                                    ?>
+                                 </span>
+                              </div>
 
-                           <div class="form-group my-3">
-                           <b>  Password :</b><input type="password" name="password" class="form-control">
-                              <span class="error">
-                                 <?php
-                                 if (isset($validation['passwordErr'])) {
-                                    echo $validation['passwordErr'];
-                                 }
-                                 ?>
-                              </span>
-                                </div>
-                           <div class="form-group my-3">
-                              <button name="submit" type="submit" class="btn btn-success w-100">Register</button>
-                           </div>
+                              <div class="form-group my-3">
+                                 <b> Password :</b><input type="password" name="password" class="form-control">
+                                 <span class="error">
+                                    <?php
+                                    if (isset($validation['passwordErr'])) {
+                                       echo $validation['passwordErr'];
+                                    }
+                                    ?>
+                                 </span>
+                              </div>
+                              <div class="form-group my-3">
+                                 <button name="submit" type="submit" class="btn btn-success w-100">Register</button>
+                              </div>
                         </form>
-                        
-                        
-                    </div>
-                    
-                </div>
-                
-                
+
+
+                     </div>
+
+                  </div>
+
+
+               </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
-<a href="create.php" class="btn btn-success">Register</a>
+         </div>
+      </div>
+   </div>
+   <a href="create.php" class="btn btn-success">Register</a>
 
 
    <script src="./Bootstrap/bootstrap.bundle.js"></script>
